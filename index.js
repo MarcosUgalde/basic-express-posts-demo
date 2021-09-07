@@ -20,6 +20,23 @@ app.get("/comments", (req, res) => {
   res.render("index.ejs", { comments });
 });
 
+app.get("/comments/new", (req, res) => {
+  res.render("new.ejs");
+});
+
+app.post("/comments", (req, res) => {
+  console.log(req.body);
+  const { username, comment } = req.body;
+  comments.push({ id: uuid(), username, comment });
+  res.redirect("/comments");
+});
+
+app.get("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const comment = comments.find((c) => c.id === id);
+  res.render("show.ejs", { comment });
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
