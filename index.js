@@ -37,6 +37,12 @@ app.get("/comments/:id", (req, res) => {
   res.render("show.ejs", { comment });
 });
 
+app.delete("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  comments = comments.filter((c) => c.id !== id);
+  res.redirect("/comments");
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
