@@ -43,6 +43,20 @@ app.delete("/comments/:id", (req, res) => {
   res.redirect("/comments");
 });
 
+app.get("/comments/:id/edit", (req, res) => {
+  const { id } = req.params;
+  const comment = comments.find((c) => c.id === id);
+  res.render("edit.ejs", { comment });
+});
+
+app.patch("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const newComment = req.body.comment;
+  const comment = comments.find((c) => c.id === id);
+  comment.comment = newComment;
+  res.redirect("/comments");
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
