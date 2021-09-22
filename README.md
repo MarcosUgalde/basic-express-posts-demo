@@ -1,2 +1,9 @@
-# basic-express-posts-tutorial
-Basic express setup I'm creating to learn express
+Basic Express CRUD operations demo with a fake database.
+
+npm install
+
+To install all the dependencies.
+
+nodemon index.js
+
+To run the application in your localhost.
